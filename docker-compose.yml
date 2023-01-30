@@ -1,5 +1,9 @@
 version: '3'
 
+networks:
+    mynetwork:
+        driver: bridge
+
 services:
     sqlserver:
         image: mcr.microsoft.com/mssql/server:2019-latest
@@ -11,7 +15,9 @@ services:
         volumes:
             - /mnt/sqlserver/data:/home/sqlserver/data
         environment:
-            SA_PASSWORD: "@Victory10"
+            SA_PASSWORD: "@Adm10"
             ACCEPT_EULA: "Y"
             MSSQL_PID: "Developer"
             TZ: "America/Sao_Paulo"
+        networks:
+            - mynetwork
